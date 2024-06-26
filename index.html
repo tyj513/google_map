@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+  </head>
+  <body>
+    <form id="scriptForm" method="post">
+      <input type="button" id="scriptButton" value="Run Script">
+    </form>
+
+    <script>
+      document.getElementById("scriptButton").addEventListener("click", function() {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "/", true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log("Script executed successfully.");
+          }
+        };
+        xhr.send(JSON.stringify({}));
+      });
+    </script>
+  </body>
+</html>
